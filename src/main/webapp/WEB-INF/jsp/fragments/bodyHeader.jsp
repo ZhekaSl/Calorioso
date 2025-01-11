@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <sec:authorize access="isAuthenticated()">
                 <a class="btn btn-success ml-2" href="meals">
-                    Моя еда
+                    <spring:message code="user.meals"/>
                 </a>
             </sec:authorize>
             <ul class="navbar-nav ml-auto">
