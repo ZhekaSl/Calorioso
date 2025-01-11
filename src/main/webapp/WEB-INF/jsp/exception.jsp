@@ -5,7 +5,7 @@
 <html>
 <jsp:include page="fragments/headTag.jsp"/>
 
-<body>
+<body class="bg-dark-main text-light">
 <jsp:include page="fragments/bodyHeader.jsp"/>
 
 <div class="jumbotron">
@@ -16,11 +16,14 @@
         <h4 class="my-5">${message}</h4>
     </div>
 </div>
+
+<!-- Раскомментировать для отображения стека ошибок -->
 <!--
-<c:forEach items="${exception.stackTrace}" var="stackTrace">
-    ${stackTrace}
-</c:forEach>
--->
+    <c:forEach items="${exception.stackTrace}" var="stackTrace">
+        ${stackTrace}
+    </c:forEach>
+    -->
+
 <jsp:include page="fragments/footer.jsp"/>
 </body>
 </html>

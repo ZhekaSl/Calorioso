@@ -1,3 +1,8 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 tr[data-meal-excess="false"] {
     color: green;
 }
@@ -6,50 +11,147 @@ tr[data-meal-excess="true"] {
     color: red;
 }
 
-.fa {
+.disabled-row {
+    background-color: rgba(0, 0, 0, 0.6) !important; /* Затемнённый фон */
+    color: rgba(255, 255, 255, 0.5); /* Бледный текст */
+}
+
+body {
+    background-color: #282c31;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column; /* Чтобы футер был всегда внизу */
+}
+
+/* Заголовок jumbotron */
+.jumbotron {
+    background-color: #282c31 !important;
+    color: white;
+    border-radius: 0;
+}
+
+a {
     cursor: pointer;
 }
 
-tr[data-user-enabled="false"] {
-    opacity: 0.3;
+.fa-remove,
+.fa-pencil {
+    cursor: pointer;
 }
 
-.error, .message {
-    padding: 10px;
-    border-radius: 4px;
+.common-text-color{
+    color: #dedede;
+    border-color: #d0d0d0;
+}
+
+.border-gray {
+    border-color: #727171 !important;
+}
+
+.bg-color-sections {
+    background-color: #212529 !important;
+}
+
+.bg-dark-main {
+    background-color: #282c31 !important;
+}
+/* Кнопки */
+.btn-warning {
+    background-color: #fd7e14;
+    border-color: #fd7e14;
+}
+
+.btn-warning:hover {
+    background-color: #e66c00;
+    border-color: #e66c00;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+    border-color: #138496;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+/* Alert сообщения */
+.alert {
     font-size: 16px;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
 }
 
-.error {
-    color: #a94442;
-    background-color: #f2dede;
-    border: 1px solid #ebccd1;
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
 }
 
-.message {
-    color: #2f9635;
-    background-color: #c6fbc2;
-    border: 1px solid #9feba6;
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
 }
 
-/*https://stackoverflow.com/a/53855189/548473*/
-#noty_layout__bottomRight {
-    width: 385px !important;
+/* Логотип и иконки */
+.fa {
+    font-size: 1.5em;
 }
 
-/*https://getbootstrap.com/docs/4.0/examples/sticky-footer/sticky-footer.css*/
-html {
-    position: relative;
-    min-height: 100%;
-}
-body {
-    margin-bottom: 60px !important; /* Margin bottom by footer height */
-}
+/* Footer */
 .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px; /* Set the fixed height of the footer here */
-    line-height: 60px; /* Vertically center the text there */
-    background-color: #f5f5f5;
+    color: white;
+    text-align: center;
+    position: relative;
+    padding: 20px 0;
+    margin-top: auto; /* Этот стиль "приклеит" футер внизу страницы */
+}
+
+/* Усиленные стили для поля поиска */
+.dataTables_filter input {
+    background-color: #282b31 !important;
+    color: #ffffff !important;
+    border: 1px solid #797878 !important;
+}
+
+table.dataTable {
+    background-color: #282b31;
+    border-color: #797878;
+}
+
+@media (max-width: 767px) {
+    .jumbotron {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .fa {
+        font-size: 1.2em;
+    }
+
+    .footer {
+        font-size: 0.9rem;
+    }
 }

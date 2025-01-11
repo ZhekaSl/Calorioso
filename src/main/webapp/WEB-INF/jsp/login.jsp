@@ -5,60 +5,128 @@
 
 <html>
 <jsp:include page="fragments/headTag.jsp"/>
-<body>
+<body class="bg-dark-main text-light">
 <jsp:include page="fragments/bodyHeader.jsp"/>
 
-<div class="jumbotron py-0">
-    <div class="container">
+<div class="jumbotron jumbotron-fluid text-white py-4">
+    <div class="container text-center">
+        <h1 class="display-4">
+            <spring:message code="app.title"/>
+        </h1>
+
         <c:if test="${param.error}">
-            <div class="error">${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</div>
+            <div class="alert alert-danger mt-3">
+                <i class="fa fa-exclamation-triangle"></i>
+                    ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+            </div>
         </c:if>
+
         <c:if test="${not empty param.message}">
-            <div class="message"><spring:message code="${param.message}" text=""/></div>
+            <div class="alert alert-success mt-3">
+                <i class="fa fa-check-circle"></i>
+                <spring:message code="${param.message}" text=""/>
+            </div>
         </c:if>
+
         <sec:authorize access="isAnonymous()">
-            <div class="pt-2">
-                <a class="btn btn-lg btn-info mt-2" href="profile/register"><spring:message code="app.register"/> &raquo;</a>
-                <button type="submit" class="btn btn-lg btn-primary mt-2" onclick="login('user@yandex.ru', 'password')">
-                    <spring:message code="app.login"/> User
+            <div class="pt-3">
+                <a class="btn btn-lg btn-warning mt-3 px-5" href="profile/register">
+                    <spring:message code="app.register"/> &raquo;
+                </a>
+                <button type="submit" class="btn btn-lg btn-info mt-3 px-5" onclick="login('user@yandex.ru', 'password')">
+                    <spring:message code="app.login"/>
+                    <spring:message code="app.user"/>
                 </button>
-                <button type="submit" class="btn btn-lg btn-primary mt-2" onclick="login('admin@gmail.com', 'admin')">
-                    <spring:message code="app.login"/> Admin
+                <button type="submit" class="btn btn-lg btn-info mt-3 px-5" onclick="login('admin@gmail.com', 'admin')">
+                    <spring:message code="app.login"/>
+                    <spring:message code="app.admin"/>
                 </button>
             </div>
         </sec:authorize>
-        <div class="lead py-4"><spring:message code="app.stackTitle"/> <br>
-            <a href="http://projects.spring.io/spring-security/">Spring Security</a>,
-            <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html">Spring MVC</a>,
-            <a href="http://projects.spring.io/spring-data-jpa/">Spring Data JPA</a>,
-            <a href="http://spring.io/blog/2014/05/07/preview-spring-security-test-method-security">Spring Security
-                Test</a>,
-            <a href="http://hibernate.org/orm/">Hibernate ORM</a>,
-            <a href="http://hibernate.org/validator/">Hibernate Validator</a>,
-            <a href="http://www.slf4j.org/">SLF4J</a>,
-            <a href="https://github.com/FasterXML/jackson">Json Jackson</a>,
-            <a href="http://ru.wikipedia.org/wiki/JSP">JSP</a>,
-            <a href="http://en.wikipedia.org/wiki/JavaServer_Pages_Standard_Tag_Library">JSTL</a>,
-            <a href="http://tomcat.apache.org/">Apache Tomcat</a>,
-            <a href="http://www.webjars.org/">WebJars</a>,
-            <a href="http://datatables.net/">DataTables</a>,
-            <a href="http://ehcache.org">EHCACHE</a>,
-            <a href="http://www.postgresql.org/">PostgreSQL</a>,
-            <a href="http://hsqldb.org/">HSQLDB</a>,
-            <a href="https://junit.org/junit5/">JUnit 5</a>,
-            <a href="http://hamcrest.org/JavaHamcrest/">Hamcrest</a>,
-            <a href="https://assertj.github.io/doc/">AssertJ</a>,
-            <a href="http://jquery.com/">jQuery</a>,
-            <a href="https://plugins.jquery.com/">jQuery plugins</a>,
-            <a href="http://getbootstrap.com/">Bootstrap</a>.
+    </div>
+</div>
+
+<!-- New Content Blocks -->
+<div class="container text-center bg-dark-main text-light py-4 rounded my-3">
+    <h2 class="display-4">
+        <spring:message code="app.features"/>
+    </h2>
+    <div class="row mt-4 d-flex align-items-stretch">
+        <div class="col-md-4 mb-3">
+            <div class="card bg-dark border-warning h-100">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">
+                        <spring:message code="app.feature1.title"/>
+                    </h5>
+                    <p class="card-text">
+                        <spring:message code="app.feature1.description"/>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card bg-dark border-info h-100">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">
+                        <spring:message code="app.feature2.title"/>
+                    </h5>
+                    <p class="card-text">
+                        <spring:message code="app.feature2.description"/>
+                    </p>
+                    <a href="swagger-ui.html" class="btn btn-warning mt-auto">
+                        <i class="fa fa-cogs"></i>
+                        <spring:message code="app.swaggerLink"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card bg-dark border-success h-100">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">
+                        <spring:message code="app.feature3.title"/>
+                    </h5>
+                    <p class="card-text">
+                        <spring:message code="app.feature3.description"/>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="lead"><spring:message code="app.description"/></div>
-    <a class="btn btn-lg btn-success my-4" href="swagger-ui.html" target="_blank">Swagger REST Api Documentation</a>
+
+<!-- User Reviews Section -->
+<div class="container text-center bg-dark-main text-light py-4 rounded my-3">
+    <h2 class="display-4 mb-4">
+        <spring:message code="app.reviews"/>
+    </h2>
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="card bg-dark text-light h-100">
+                <div class="card-body">
+                    <p class="card-text">"<spring:message code="app.review1"/> - Иван П.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card bg-dark text-light h-100">
+                <div class="card-body">
+                    <p class="card-text">"<spring:message code="app.review2"/> - Анна С.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card bg-dark text-light h-100">
+                <div class="card-body">
+                    <p class="card-text">"<spring:message code="app.review3"/> - Алексей К.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 <jsp:include page="fragments/footer.jsp"/>
+
 <script type="text/javascript">
     <c:if test="${not empty param.username}">
     setCredentials("${param.username}", "");
@@ -68,6 +136,7 @@
         setCredentials(username, password);
         $("#login_form").submit();
     }
+
     function setCredentials(username, password) {
         $('input[name="username"]').val(username);
         $('input[name="password"]').val(password);

@@ -4,55 +4,65 @@
 <%@ taglib prefix="fn" uri="http://topjava.javawebinar.ru/functions" %>
 <html>
 <jsp:include page="fragments/headTag.jsp"/>
-<body>
+<body class="bg-dark-main text-light">
 <script type="text/javascript" src="resources/js/topjava.common.js" defer></script>
 <script type="text/javascript" src="resources/js/topjava.meals.js" defer></script>
 <jsp:include page="fragments/bodyHeader.jsp"/>
 
-<div class="jumbotron pt-4">
+<div class="jumbotron pt-4 text-light">
     <div class="container">
-        <h3 class="text-center"><spring:message code="meal.title"/></h3>
-        <%--https://getbootstrap.com/docs/4.0/components/card/--%>
-        <div class="card border-dark">
+        <h3 class="text-center common-text-color"><spring:message code="meal.title"/></h3>
+        <%-- https://getbootstrap.com/docs/4.0/components/card/ --%>
+        <div class="card border-gray bg-color-sections text-light">
             <div class="card-body pb-0">
                 <form id="filter">
                     <div class="row">
-                        <div class="col-2">
-                            <label for="startDate"><spring:message code="meal.startDate"/></label>
-                            <input class="form-control" name="startDate" id="startDate" autocomplete="off">
+                        <!-- "От" дата -->
+                        <div class="col-6 col-md-3">
+                            <label for="startDate" class="common-text-color"><spring:message code="meal.startDate"/></label>
+                            <input class="form-control border-gray bg-dark-main text-white" name="startDate" id="startDate" autocomplete="off">
                         </div>
-                        <div class="col-2">
-                            <label for="endDate"><spring:message code="meal.endDate"/></label>
-                            <input class="form-control" name="endDate" id="endDate" autocomplete="off">
+
+                        <!-- "До" дата -->
+                        <div class="col-6 col-md-3">
+                            <label for="endDate" class="common-text-color"><spring:message code="meal.endDate"/></label>
+                            <input class="form-control border-gray bg-dark-main text-white" name="endDate" id="endDate" autocomplete="off">
                         </div>
-                        <div class="offset-2 col-3">
-                            <label for="startTime"><spring:message code="meal.startTime"/></label>
-                            <input class="form-control" name="startTime" id="startTime" autocomplete="off">
+
+                        <!-- "От" время -->
+                        <div class="col-6 col-md-3">
+                            <label for="startTime" class="common-text-color"><spring:message code="meal.startTime"/></label>
+                            <input class="form-control border-gray bg-dark-main text-white" name="startTime" id="startTime" autocomplete="off">
                         </div>
-                        <div class="col-3">
-                            <label for="endTime"><spring:message code="meal.endTime"/></label>
-                            <input class="form-control" name="endTime" id="endTime" autocomplete="off">
+
+                        <!-- "До" время -->
+                        <div class="col-6 col-md-3">
+                            <label for="endTime" class="common-text-color"><spring:message code="meal.endTime"/></label>
+                            <input class="form-control border-gray bg-dark-main text-white" name="endTime" id="endTime" autocomplete="off">
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="card-footer text-right">
-                <button class="btn btn-danger" onclick="clearFilter()">
+            <div class="card-footer text-right bg-color-sections border-dark">
+                <!-- Кнопка очистки фильтра -->
+                <button class="btn btn-outline-danger" onclick="clearFilter()">
                     <span class="fa fa-remove"></span>
                     <spring:message code="common.cancel"/>
                 </button>
-                <button class="btn btn-primary" onclick="ctx.updateTable()">
+                <!-- Кнопка применения фильтра -->
+                <button class="btn btn-outline-primary" onclick="ctx.updateTable()">
                     <span class="fa fa-filter"></span>
                     <spring:message code="meal.filter"/>
                 </button>
             </div>
         </div>
+
         <br/>
-        <button class="btn btn-primary" onclick="add()">
+        <button class="btn btn-outline-primary" onclick="add()">
             <span class="fa fa-plus"></span>
             <spring:message code="common.add"/>
         </button>
-        <table class="table table-striped" id="datatable">
+        <table class="table table-striped table-dark" id="datatable">
             <thead>
             <tr>
                 <th><spring:message code="meal.dateTime"/></th>
@@ -69,35 +79,35 @@
 <div class="modal fade" tabindex="-1" id="editRow">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-dark-main text-light">
                 <h4 class="modal-title" id="modalTitle"></h4>
-                <button type="button" class="close" data-dismiss="modal" onclick="closeNoty()">&times;</button>
+                <button type="button" class="close text-light" data-dismiss="modal" onclick="closeNoty()">&times;</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body bg-dark-main text-light">
                 <form id="detailsForm">
                     <input type="hidden" id="id" name="id">
 
                     <div class="form-group">
-                        <label for="dateTime" class="col-form-label"><spring:message code="meal.dateTime"/></label>
-                        <input class="form-control" id="dateTime" name="dateTime" autocomplete="off"
+                        <label for="dateTime" class="col-form-label common-text-color"><spring:message code="meal.dateTime"/></label>
+                        <input class="form-control bg-dark-main text-white border-gray" id="dateTime" name="dateTime" autocomplete="off"
                                placeholder="<spring:message code="meal.dateTime"/>">
                     </div>
 
                     <div class="form-group">
-                        <label for="description" class="col-form-label"><spring:message
+                        <label for="description" class="col-form-label common-text-color"><spring:message
                                 code="meal.description"/></label>
-                        <input type="text" class="form-control" id="description" name="description"
+                        <input type="text" class="form-control bg-dark-main text-white border-gray" id="description" name="description"
                                placeholder="<spring:message code="meal.description"/>">
                     </div>
 
                     <div class="form-group">
-                        <label for="calories" class="col-form-label"><spring:message code="meal.calories"/></label>
-                        <input type="number" class="form-control" id="calories" name="calories" placeholder="1000">
+                        <label for="calories" class="col-form-label common-text-color"><spring:message code="meal.calories"/></label>
+                        <input type="number" class="form-control bg-dark-main text-white border-gray" id="calories" name="calories" placeholder="1000">
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeNoty()">
+            <div class="modal-footer bg-dark-main border-gray">
+                <button type="button" class="btn btn-secondary text-light" data-dismiss="modal" onclick="closeNoty()">
                     <span class="fa fa-close"></span>
                     <spring:message code="common.cancel"/>
                 </button>
